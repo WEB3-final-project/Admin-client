@@ -5,7 +5,9 @@ import {
     DateField,
     FunctionField,
 } from "react-admin";
-
+import { Link } from "react-router-dom";
+import { EntityPreview } from "../components/entityPreview";
+import { getPath } from "../components/path";
 export const AuditLogShow = () => (
     <Show>
         <SimpleShowLayout>
@@ -31,25 +33,28 @@ export const AuditLogShow = () => (
 
             <FunctionField
                 label="Anciennes données"
-                render={(record) =>
-                    JSON.stringify(
-                        record.old_data,
-                        null,
-                        2
-                    )
-                }
+                render={(record) => (
+                    <EntityPreview
+                        entityType={record.entity_type}
+                        data={record.old_data}
+                    />
+                )}
             />
 
             <FunctionField
-                label="Nouvelles données"
-                render={(record) =>
-                    JSON.stringify(
-                        record.new_data,
-                        null,
-                        2
-                    )
-                }
+                render={(record) => {
+                    if (record.action === "delete") {
+                        return "Ressource supprimée";
+                    }
+
+                    return (
+                        <Link to={getPath(record)}>
+                            Voir la ressource
+                        </Link>
+                    );
+                }}
             />
+
         </SimpleShowLayout>
     </Show>
 );

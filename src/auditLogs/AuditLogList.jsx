@@ -24,7 +24,10 @@ const auditFilters = [
     />,
 ];
 export const AuditLogList = () => (
-    <List filters={auditFilters}>
+    <List 
+    filters={auditFilters}
+    sort={{ field: "created_at", order: "DESC" }}
+    >
         <Datagrid rowClick="show">
             <TextField source="id" />
 

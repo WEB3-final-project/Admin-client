@@ -1,4 +1,4 @@
-import { Admin, Resource, CustomRoutes} from 'react-admin';
+import { Admin, Resource, CustomRoutes } from 'react-admin';
 import { Route } from 'react-router-dom';
 import { authProvider } from './providers/authProvider';
 import { SignUp } from './components/signUp';
@@ -6,6 +6,10 @@ import { dataProvider } from './providers/dataProvider';
 import { AuditLogList } from './auditLogs/AuditLogList';
 import { AuditLogShow } from './auditLogs/AuditLogShow';
 import { LoginPage } from './auth/login';
+import { SessionShow } from './sessions/sessionsShow';
+import { EventShow } from './events/EventShow';
+import { QuestionShow } from './questions/QuestionShow';
+import { RoomShow } from './rooms/RoomsShow';
 const App = () => (
     <Admin
         authProvider={authProvider}
@@ -20,7 +24,25 @@ const App = () => (
             list={AuditLogList}
             show={AuditLogShow}
         />
+        <Resource
+            name="events"
+            show={EventShow}
+        />
 
+        <Resource
+            name="rooms"
+            show={RoomShow}
+        />
+
+        <Resource
+            name="sessions"
+            show={SessionShow}
+        />
+
+        <Resource
+            name="questions"
+            show={QuestionShow}
+        />
     </Admin>
 );
 
