@@ -1,3 +1,4 @@
+import { fetchUtils } from 'react-admin';
 import jsonServerProvider from "ra-data-json-server";
 const httpClient = (url, options = {}) => {
     if (!options.headers) {
