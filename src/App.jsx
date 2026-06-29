@@ -16,6 +16,8 @@ import { EventShow } from './events/EventShow';
 import { EventCreate } from './events/EventCreate';
 import { EventEdit } from './events/EventEdit';
 import { QuestionShow } from './questions/QuestionShow';
+import { QuestionEdit } from "./questions/QuestionEdit";
+import { QuestionList } from "./questions/QuestionList";
 import { RoomList } from "./rooms/RoomList";
 import { RoomCreate } from "./rooms/RoomCreate";
 import { RoomShow } from './rooms/RoomsShow';
@@ -62,7 +64,9 @@ const App = () => (
 
         <Resource
             name="questions"
+            list={QuestionList}
             show={QuestionShow}
+            edit={QuestionEdit}
         />
         
         <Resource
