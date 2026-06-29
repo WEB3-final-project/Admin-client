@@ -13,13 +13,24 @@ export const Dashboard = () => {
     });
 
     useEffect(() => {
-
-        fetch("http://localhost:4000/api/stats")
-            .then(res => res.json())
-            .then(data => setStats(data))
-            .catch(console.error);
-
-    }, []);
+      const token = localStorage.getItem("access_token");
+  
+      fetch("http://localhost:4000/api/stats", {
+          headers: {
+              Authorization: `Bearer ${token}`,
+          },
+          credentials: "include",
+      })
+          .then(async (res) => {
+              if (!res.ok) {
+                  throw new Error(await res.text());
+              }
+              return res.json();
+          })
+          .then((data) => setStats(data))
+          .catch(console.error);
+  
+  }, []);
 
     return (
 
