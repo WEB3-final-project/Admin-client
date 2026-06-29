@@ -6,6 +6,7 @@ import { dataProvider } from './providers/dataProvider';
 import { AuditLogList } from './auditLogs/AuditLogList';
 import { AuditLogShow } from './auditLogs/AuditLogShow';
 import { LoginPage } from './auth/login';
+import { Dashboard } from "./dashboard/Dashboard";
 import { SessionList } from './sessions/SessionList';
 import { SessionShow } from './sessions/SessionsShow';
 import { SessionCreate } from './sessions/SessionCreate';
@@ -26,6 +27,7 @@ const App = () => (
         authProvider={authProvider}
         dataProvider={dataProvider}
         loginPage={LoginPage}
+        dashboard={Dashboard}
     >
         <CustomRoutes noLayout>
             <Route path="/signup" element={<SignUp />} />
